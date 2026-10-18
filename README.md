@@ -1,100 +1,134 @@
-# ZeroBuzz
+<p align="center">
+  <img src="assets/logo.png" alt="ZeroBuzz Logo" width="220" style="border-radius: 20px;">
+</p>
 
-> **Pure on-device notification privacy and smart semantic silence.**  
-> ZeroBuzz intercepts and silences promotional noise, marketing campaigns, and clickbait notifications in real-time, while ensuring your OTPs, transactional bank alerts, food delivery updates, and personal messages always get through untouched.
+<h1 align="center">ZeroBuzz</h1>
+
+<p align="center">
+  <strong>Pure on-device notification privacy and smart semantic silence.</strong><br>
+  ZeroBuzz intercepts and silences promotional noise, marketing campaigns, and clickbait notifications in real time — with zero internet permissions, &lt;0.1ms latency, and 100% offline privacy.
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/Android-8.0+-3DDC84.svg?style=flat-square&logo=android&logoColor=white" alt="Android 8.0+">
+  <img src="https://img.shields.io/badge/Kotlin-2.0-7F52FF.svg?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin">
+  <img src="https://img.shields.io/badge/Privacy-100%25%20On--Device-success.svg?style=flat-square" alt="100% Offline">
+  <img src="https://img.shields.io/badge/Latency-%3C0.1ms-orange.svg?style=flat-square" alt="Sub-millisecond">
+</p>
+
+## ✨ The Story Behind ZeroBuzz
+
+Every single day, my phone was buzzing incessantly.
+
+I would pick it up in a hurry expecting an urgent OTP, a bank transaction, an important message, or a cab arrival alert. Instead?
+- *"Craving Biryani? Get 60% OFF right now!"* 🍕
+- *"Pre-approved personal loan of ₹5,00,000 waiting for you!"* 💸
+- *"Hurry! Flash sale ends in 14 minutes!"* ⚡
+- *"Your cart misses you! Complete checkout now."* 🛒
+
+Modern apps treat our notification shades like free billboard space. Every app feels entitled to buzz your pocket with manufactured urgency just to bump its daily active user metrics.
+
+I tried turning off app notifications entirely, but then I missed real-time cab tracking, delivery partner calls, and flight updates. Android's native "Do Not Disturb" is a blunt hammer — it silences everything or nothing. And third-party notification managers were either bloated, battery hogs, or demanded full network access to analyze private notifications in the cloud.
+
+I was completely fed up. I wanted my phone to be peaceful again without risking critical alerts, and without handing over my notification feed to remote servers.
+
+So I built **ZeroBuzz**.
 
 ---
 
-## ✨ Features
+### What ZeroBuzz Does
 
-- **🛡️ 100% On-Device Privacy**: Operates with **zero internet permissions** (`android.permission.INTERNET` is not requested). Your notification data never leaves your phone.
-- **⚡ Sub-Millisecond Classification**: Custom subword n-gram semantic engine evaluates notifications in under `0.1ms` directly in native Kotlin code with 0% battery impact.
-- **📱 Clean Modern UI**: Monochromatic design language inspired by modern design systems, complete with custom launcher adaptive icons and smooth interactions.
-- **🎯 3-Tab Architecture**:
-  1. **Whitelist**: Search and toggle any installed app to bypass filtering with zero latency. Whitelisted app notifications pass straight through and are not logged.
-  2. **Activity**: Clean notification log grouped by app with instant single-tap silence/unsilence toggles (`Buzz` / `Unbuzz`).
-  3. **Settings**: Master toggle for "Want buzz in your life" to pause or activate on-device filtering, plus app details.
-- **🔁 Offline Sync & Continual Learning**: Connect your phone to your computer via USB to sync your custom preferences, retrain the semantic model with your feedback, and hot-update the app.
+**ZeroBuzz** is a lightweight, 100% on-device Android service powered by a subword semantic classifier. It automatically detects and silences commercial promotional spam in real time, while guaranteeing that your **OTPs, bank account debits/credits, cab tracking, delivery alerts, and personal messages** arrive untouched.
+
+- 🔒 **Zero Internet Permission:** `android.permission.INTERNET` is not even requested in the manifest. Nothing ever leaves your phone.
+- ⚡ **Sub-Millisecond Speed:** The native Kotlin engine evaluates notifications in under `0.1ms` with 0% battery impact.
+- 🎯 **Ground-Truth Trained:** Built on Indian telecom regulatory standards (TRAI headers), public academic benchmarks, and personalized on-device feedback.
 
 ---
 
-## ⚡ Quick Start (`just` Task Runner)
+## 📦 Download & Quick Install
 
-ZeroBuzz uses [`just`](https://github.com/casey/just) for one-command workflows:
+### 1. Download Pre-built APK
+Grab the latest release APK directly from GitHub:
 
-| Command | Action |
-| :--- | :--- |
-| `just download-data` | Downloads public benchmark corpora from original sources (Hugging Face & UCI) |
-| `just extract-device` | Extracts real-world notification/SMS history from connected phone into `data/device/` (git-ignored) |
-| `just train` | Trains subword n-gram classifier and exports compiled Kotlin model weights |
-| `just build` | Compiles the Android debug APK |
-| `just install` | Installs or updates ZeroBuzz on your connected phone |
-| `just sync` | Pulls feedback from phone, retrains model, and hot-updates APK in one step |
+👉 **[Download Latest ZeroBuzz APK](https://github.com/hereisSwapnil/ZeroBuzz/releases/latest)**
+
+### 2. Install on Your Phone (Android 8.0+)
+1. Download the `.apk` file to your Android phone.
+2. Tap to install (enable *"Install from unknown sources"* if prompted).
+3. Open **ZeroBuzz** and grant **Notification Listener Permission** when prompted.
+4. That's it! ZeroBuzz runs silently in the background.
+
+---
+
+## 🔥 Key Features
+
+- 🛡️ **100% On-Device** — Zero internet permissions. Your data never leaves your phone.
+- ⚡ **Sub-Millisecond** — Classifies notifications in under `0.1ms` with zero battery impact.
+- 🎯 **Smart Safety** — OTPs, bank alerts, cab tracking, and deliveries are never silenced.
+- 📋 **App Whitelist** — Instantly whitelist apps like WhatsApp or Slack for zero-delay passthrough.
+- 📊 **Activity Feed** — Review blocked notifications and one-tap toggle `Buzz` / `Unbuzz`.
+- 🔄 **Feedback Loop** — Sync corrections via USB, retrain, and hot-reload updated weights.
+- 🎨 **Minimal UI** — Clean monochromatic design with adaptive theming.
+
+---
+
+## 🏗️ How It Works
+
+```
+Incoming Push Notification
+         │
+         ▼
+[NotificationListenerService]
+         │
+         ├───► Is Package in Whitelist?
+         │         ├── YES ──► Deliver Immediately (0ms delay, no logging)
+         │         └── NO
+         │              │
+         │              ▼
+         ├───► Is Engine Enabled? ("Want buzz in your life")
+         │         ├── NO ──► Deliver Untouched
+         │         └── YES
+         │              │
+         │              ▼
+         ├───► [SemanticClassifier.classify()]
+         │         │
+         │         ├── 1. Hard Safety Rules (OTP, Bank Debit/Credit, Delivery, Meds) ──► DELIVER
+         │         └── 2. Linear Subword Naive Bayes Score (Threshold: 0.50)
+         │                   │
+         │                   ├── Score >= 0.50 (Spam / Promo) ──► cancelNotification() [SILENCED]
+         │                   └── Score < 0.50  (Essential)    ──► DELIVER
+         │
+         ▼
+[Local Activity Log] ──► Inspect in App & Toggle Preferences Anytime
+```
 
 ---
 
 ## 📊 Dataset & Ground-Truth Classification
 
-### Are notifications pre-classified by an LLM?
-**No LLM is used for classification.** All labels come from **deterministic ground truth**:
-1. **Telecom Regulatory Suffixes (TRAI Mandate)**: Under enterprise telecom regulations, incoming sender headers are deterministically typed by the telecom network:
-   - `-P` header (e.g. `AX-ZUDIO-P`, `AD-AIRTEL-P`): Promotional advertising / deals $\rightarrow$ **Label 1 (Promo Spam)**.
-   - `-S` / `-T` / `-G` headers (e.g. `VM-ZAGGLE-S`, `JK-BOBOTP-T`): Service, OTP, and government alerts $\rightarrow$ **Label 0 (Allowed)**.
-2. **Academic & Community Benchmarks**: Pre-annotated public datasets with human ground truth labels.
-3. **Hard Mission-Critical Rules**: High-priority regex whitelisting for OTPs, transactional bank debits/credits, medications, and ride/delivery tracking guarantees **zero false positives**.
+ZeroBuzz does not rely on cloud LLMs for classification. Training corpora are compiled from deterministic ground-truth:
 
-### Online Datasets & Formats
+1. **[TRAI Telecom Regulatory Standards (TCCCPR)](https://trai.gov.in/notifications/press-releases/telecom-commercial-communications-customer-preference-regulations-2018):** In India, incoming SMS headers are strictly typed by telecom networks:
+   - `-P` suffix (e.g., `AX-TNCARD-P`, `CP-TITNWO-P`): Mandatory **Commercial Promotional Marketing** $\rightarrow$ `Label 1`.
+   - `-S` / `-T` / `-G` suffixes (e.g., `VM-KOTAKB-S`, `AX-HDFCBK-T`): Service, OTP, and Government alerts $\rightarrow$ `Label 0`.
+2. **Public Academic & Benchmark Datasets:**
+   - [UCI Machine Learning Repository: SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) (5,574 samples)
+   - [Hugging Face: `alusci/sms-otp-spam-dataset`](https://huggingface.co/datasets/alusci/sms-otp-spam-dataset) (10,000 OTP & authentication samples)
+   - [Hugging Face: `mshenoda/spam-messages`](https://huggingface.co/datasets/mshenoda/spam-messages) (50,000+ marketing and spam samples)
+3. **Hard Mission-Critical Rules:** Regex shields guarantee that any notification with valid OTP codes, bank transaction amounts, or cab arrival status passes through untouched.
 
-Downloaded directly from original sources via `just download-data`:
-
-| Dataset | Source | Format & Schema | Samples |
-| :--- | :--- | :--- | :--- |
-| **UCI SMS Spam** | [UCI ML Repository](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) | `TSV` with columns: `label` (`ham`/`spam`), `message` | 5,574 |
-| **HF Spam Messages** | [Hugging Face (`mshenoda`)](https://huggingface.co/datasets/mshenoda/spam-messages) | `CSV` with columns: `text`, `label` (`0`/`1`) | 50,000+ |
-| **HF SMS OTP** | [Hugging Face (`alusci`)](https://huggingface.co/datasets/alusci/sms-otp-spam-dataset) | `CSV` with columns: `text`, `category` (`OTP`, `Auth`) | 10,000 |
-
-All sources are unified into clean JSON structures in `data/processed/` during preprocessing:
-```json
-{
-  "title": "Bank Alert",
-  "text": "Your account has been debited by INR 250.00",
-  "channel": "sms_notification",
-  "label": 0
-}
-```
-
-### Personal Device Data (`data/device/`)
-Run `just extract-device` to extract your own phone's historical notification data via ADB. The entire `data/device/` folder is ignored by `.gitignore` to ensure your personal notifications are never committed or published.
+*(All datasets are downloaded locally on demand via `just download-data` and are never committed or pushed to Git).*
 
 ---
 
-## 🏗️ Project Structure
+## 📜 License
 
-```
-ZeroBuzz/
-├── Justfile               # Project task runner recipes
-├── android/               # Complete Android Studio project (Kotlin + Material 3)
-│   ├── app/
-│   │   ├── src/main/java/com/zerobuzz/
-│   │   │   ├── data/      # On-device storage & state flows
-│   │   │   ├── ml/        # High-speed semantic classifier & compiled weights
-│   │   │   ├── service/   # NotificationListenerService implementation
-│   │   │   └── ui/        # MainActivity, Adapters & view binding
-│   │   └── src/main/res/  # Layouts, vector drawables & adaptive mipmap icons
-│   └── build.gradle.kts
-├── data/
-│   ├── device/            # Local device extracted data (strictly git-ignored)
-│   ├── raw/               # Download & extraction scripts
-│   └── processed/         # Unified training corpora
-├── ml/                    # Classifier training pipeline & model evaluation
-├── scripts/               # USB device sync & retraining automated pipeline
-├── .agents/               # Architecture guides, specs, and roadmaps for AI agents
-├── .gitignore             # Comprehensive ignore rules
-└── README.md
-```
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
 
 ---
 
-## 👤 Author
-
-Developed by **[Swapnil](https://github.com/hereisswapnil)**
+<p align="center">
+  Crafted with care by <strong><a href="https://github.com/hereisSwapnil">Swapnil</a></strong>
+</p>

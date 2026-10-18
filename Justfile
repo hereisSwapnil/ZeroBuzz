@@ -44,3 +44,22 @@ sync:
 # Optional all-in-one: sync feedback, retrain, compile, and hot-install on phone
 sync-all:
     python3 scripts/sync_and_retrain.py --all
+
+# Stage a versioned APK in releases/ folder (e.g. `just stage-release v1.0.0`)
+stage-release VERSION="v1.0.0":
+    @echo "📦 Building ZeroBuzz APK for {{VERSION}}..."
+    cd android && ./gradlew assembleDebug
+    @mkdir -p releases
+    cp android/app/build/outputs/apk/debug/app-debug.apk releases/ZeroBuzz-{{VERSION}}.apk
+    @echo "✅ Prepared release binary: releases/ZeroBuzz-{{VERSION}}.apk"
+    @echo "💡 When ready to publish to GitHub, run: just publish-release {{VERSION}}"
+
+# Publish release and APK to GitHub as an attached download (DO NOT run until ready to release)
+publish-release VERSION="v1.0.0":
+    @if [ ! -f "releases/ZeroBuzz-{{VERSION}}.apk" ]; then \
+        echo "❌ Release binary not found. Running stage-release first..."; \
+        just stage-release {{VERSION}}; \
+    fi
+    gh release create {{VERSION}} releases/ZeroBuzz-{{VERSION}}.apk \
+        --title "ZeroBuzz {{VERSION}}" \
+        --notes-file releases/RELEASE_NOTES.md
