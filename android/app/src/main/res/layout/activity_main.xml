@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/canvas">
+
+    <!-- Top App Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivHeaderLogo"
+            android:layout_width="38dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_zerobuzz_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="ZeroBuzz Logo"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZeroBuzz"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.02" />
+    </LinearLayout>
+
+    <!-- Main Content Container -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toTopOf="@id/navDivider">
+
+        <!-- 1. Whitelist Screen -->
+        <LinearLayout
+            android:id="@+id/viewWhitelist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/etSearchApp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_search_input"
+                android:hint="Search installed apps..."
+                android:textColorHint="#A1A1AA"
+                android:textColor="#09090B"
+                android:textSize="14sp"
+                android:paddingHorizontal="16dp"
+                android:drawableStart="@drawable/ic_shield"
+                android:drawableTint="#71717A"
+                android:drawablePadding="10dp"
+                android:layout_marginBottom="12dp"
+                android:inputType="text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvApps"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp" />
+        </LinearLayout>
+
+        <!-- 2. Activity / Notification Feed Screen -->
+        <LinearLayout
+            android:id="@+id/viewActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:visibility="gone">
+
+            <!-- Filter Buttons: All, Unbuzz, Buzz -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFilterAll"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:text="All"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFilterUnbuzz"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:text="Unbuzz"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFilterBuzz"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:text="Buzz"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvEmptyActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="No notifications intercepted yet.\nYour notifications will appear here cleanly."
+                android:textColor="#71717A"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNotifications"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp" />
+        </LinearLayout>
+
+        <!-- 3. Settings Screen -->
+        <ScrollView
+            android:id="@+id/viewSettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
+
+                <!-- Engine Enable/Disable Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E4E4E7"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Want buzz in your life"
+                                android:textColor="#09090B"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvEngineStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Silences promotional spam on-device"
+                                android:textColor="#71717A"
+                                android:textSize="12sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/switchEngine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/switch_thumb_selector"
+                            app:trackTint="@color/switch_track_selector"
+                            app:trackDecorationTint="@android:color/transparent" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- App Information Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E4E4E7"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ZeroBuzz"
+                            android:textColor="#09090B"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Version 1.0.0"
+                            android:textColor="#71717A"
+                            android:textSize="12sp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Pure on-device notification privacy and smart semantic silence."
+                            android:textColor="#52525B"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="2dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Developer Redirect Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDeveloper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E4E4E7"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Made by hereisSwapnil"
+                                android:textColor="#09090B"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="https://github.com/hereisswapnil"
+                                android:textColor="#71717A"
+                                android:textSize="12sp"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="↗"
+                            android:textColor="#09090B"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <!-- Hairline divider for bottom navbar -->
+    <View
+        android:id="@+id/navDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E4E4E7"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation" />
+
+    <!-- Modern Minimalist Monochromatic Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#FFFFFF"
+        app:elevation="0dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemRippleColor="#15000000"
+        app:labelVisibilityMode="labeled"
+        app:itemPaddingTop="8dp"
+        app:itemPaddingBottom="8dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#E4E4E7"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <ImageView
+            android:id="@+id/ivAppIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="14dp"
+            android:contentDescription="App Icon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#09090B"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPackageName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#71717A"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="middle"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchWhitelist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:thumbTint="@color/switch_thumb_selector"
+            app:trackTint="@color/switch_track_selector"
+            app:trackDecorationTint="@android:color/transparent" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

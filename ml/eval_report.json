@@ -1,0 +1,203 @@
+{
+  "metrics": {
+    "total_test_samples": 23,
+    "accuracy_percent": 100.0,
+    "precision_percent": 100.0,
+    "recall_percent": 100.0,
+    "f1_score": 100.0,
+    "avg_latency_microseconds": 60.7,
+    "avg_latency_milliseconds": 0.0607
+  },
+  "confusion_matrix": {
+    "true_positive": 11,
+    "true_negative": 12,
+    "false_positive": 0,
+    "false_negative": 0
+  },
+  "sample_evaluations": [
+    {
+      "title": "Your Meesho order #8491823 has been dispatched",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 255.79
+    },
+    {
+      "title": "Order #48291 Out for delivery today",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 5.29
+    },
+    {
+      "title": "Delivered: Printed Cotton Kurta",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 3.12
+    },
+    {
+      "title": "Play Fest ends soon",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 296.33
+    },
+    {
+      "title": "Mega Blockbuster Sale is LIVE!",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 43.67
+    },
+    {
+      "title": "Price dropped on items in your cart!",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 44.12
+    },
+    {
+      "title": "Delivery partner Sunil is at your door",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 47.54
+    },
+    {
+      "title": "Blinkit order delivered in 8 mins",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 4.25
+    },
+    {
+      "title": "Huge 60% discount on Pizza!",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 39.87
+    },
+    {
+      "title": "Craving hot snacks this afternoon?",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 42.38
+    },
+    {
+      "title": "SIP Successfully Executed",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 51.67
+    },
+    {
+      "title": "Order Placed with AMC",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 9.12
+    },
+    {
+      "title": "Funds and stocks can overlap",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 74.58
+    },
+    {
+      "title": "Need funds on Sunday? Low interest loan ready \u2705",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 67.08
+    },
+    {
+      "title": "Your OTP for HDFC Bank is 948201",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 1.92
+    },
+    {
+      "title": "Card Debited: Rs 320 at Subway",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 6.42
+    },
+    {
+      "title": "Missed Notifications",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 64.37
+    },
+    {
+      "title": "Ananya Sharma sent you a message",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 67.0
+    },
+    {
+      "title": "People are viewing your profile",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 53.92
+    },
+    {
+      "title": "Medication Reminder",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 10.71
+    },
+    {
+      "title": "High Heart Rate Alert",
+      "prob": 0.0,
+      "predicted_spam": false,
+      "expected_spam": false,
+      "correct": true,
+      "latency_us": 10.5
+    },
+    {
+      "title": "One app, your whole checkup",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 78.58
+    },
+    {
+      "title": "Don't Lose Health Records Again",
+      "prob": 1.0,
+      "predicted_spam": true,
+      "expected_spam": true,
+      "correct": true,
+      "latency_us": 117.75
+    }
+  ]
+}

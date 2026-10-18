@@ -1,0 +1,15 @@
+<resources>
+    <!-- Monochromatic Theme - Material 3 Light -->
+    <style name="Theme.ZeroBuzz" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#18181B</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/canvas</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">@color/canvas</item>
+    </style>
+</resources>

@@ -1,0 +1,23 @@
+<resources>
+    <!-- ZeroBuzz Theme Palette Extracted from App Icon -->
+    <color name="canvas">#F7F7FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_border">#E2E4EC</color>
+    <color name="surface_subtle">#F1F3F9</color>
+    
+    <color name="primary">#181829</color>
+    <color name="primary_dark">#0F0F1A</color>
+    <color name="primary_light">#EEF2FF</color>
+    
+    <!-- Icon Luminous Accents -->
+    <color name="accent_violet">#7C3AED</color>
+    <color name="accent_cyan">#06B6D4</color>
+    <color name="accent_glow">#6366F1</color>
+    
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#94A3B8</color>
+    
+    <!-- Launcher Icon Background -->
+    <color name="ic_launcher_background">#F5F5F7</color>
+</resources>

@@ -1,0 +1,54 @@
+# Built application files
+*.apk
+*.aar
+*.aab
+
+# Android Studio and Gradle
+.gradle/
+build/
+*/build/
+.kotlin/
+.idea/
+*.iml
+local.properties
+.cxx/
+.externalNativeBuild/
+captures/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Java/Kotlin class files
+*.class
+*.dex
+
+# Python & ML
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+venv/
+.venv/
+env/
+
+# Personal / Dynamic Extracted User Data (Privacy Guarantee)
+data/device/*
+!data/device/.gitkeep
+data/raw/device_extracted_history.json
+data/raw/user_corrections.json
+data/processed/*
+!data/processed/.gitkeep
+data/raw/online_corpora/*
+!data/raw/online_corpora/.gitkeep
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/

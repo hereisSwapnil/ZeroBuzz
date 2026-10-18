@@ -1,0 +1,45 @@
+{
+  "description": "Public Online Datasets for Mobile Message, SMS & Push Notification Classification",
+  "public_corpora": [
+    {
+      "name": "mshenoda/spam-messages",
+      "platform": "Hugging Face",
+      "rows": 59700,
+      "format": "text, label (ham/spam)",
+      "url": "https://huggingface.co/datasets/mshenoda/spam-messages",
+      "description": "Aggregated mobile messaging corpus from Telegram, SMS Spam Collection, and Enron, labeled into ham (transactional/conversational) and spam."
+    },
+    {
+      "name": "alusci/sms-otp-spam-dataset",
+      "platform": "Hugging Face",
+      "rows": 12000,
+      "format": "text, label (otp/transactional vs spam)",
+      "url": "https://huggingface.co/datasets/alusci/sms-otp-spam-dataset",
+      "description": "Specialized in bank OTPs, debit/credit alerts, delivery pins, and multi-factor authentication tokens."
+    },
+    {
+      "name": "Mobiusi/Promotional-Offers-And-Price-Claim",
+      "platform": "Hugging Face",
+      "rows": 15000,
+      "format": "claim_text, label",
+      "url": "https://huggingface.co/datasets/Mobiusi/Promotional-Offers-And-Price-Claim-Fact-Checking-Dataset",
+      "description": "Real-world promotional offer text, discounts, price claims, and limited-time marketing copy."
+    },
+    {
+      "name": "marketeam/Marketing-Emails",
+      "platform": "Hugging Face",
+      "rows": 45000,
+      "format": "subject, body, intent",
+      "url": "https://huggingface.co/datasets/marketeam/Marketing-Emails",
+      "description": "Commercial marketing framing, urgency triggers, and engagement call-to-actions."
+    },
+    {
+      "name": "SMS Spam Collection",
+      "platform": "UCI Machine Learning Repository / Kaggle",
+      "rows": 5574,
+      "format": "v1 (label), v2 (text)",
+      "url": "https://archive.ics.uci.edu/dataset/228/sms+spam+collection",
+      "description": "Standard benchmark corpus for mobile notification spam filtering."
+    }
+  ]
+}
