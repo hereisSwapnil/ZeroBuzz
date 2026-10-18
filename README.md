@@ -62,6 +62,16 @@ Grab the latest release APK directly from GitHub:
 
 ---
 
+## 📱 Screenshots
+
+<p align="center">
+  <img src="assets/screenshot01.jpeg" alt="Whitelist Screen" width="240" style="border-radius: 12px; margin: 6px;">
+  <img src="assets/screenshot02.jpeg" alt="Activity Screen" width="240" style="border-radius: 12px; margin: 6px;">
+  <img src="assets/screenshot03.jpeg" alt="Settings Screen" width="240" style="border-radius: 12px; margin: 6px;">
+</p>
+
+---
+
 ## 🔥 Key Features
 
 - 🛡️ **100% On-Device** — Zero internet permissions. Your data never leaves your phone.
