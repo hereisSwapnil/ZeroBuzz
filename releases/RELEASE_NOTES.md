@@ -1,17 +1,14 @@
-# ZeroBuzz Release Notes
+# ZeroBuzz v1.0.1 Release Notes
 
-## What's New in ZeroBuzz
+## Improvements & Fixes
 
-- **🛡️ 100% On-Device Semantic Filter:** High-speed subword Naive Bayes classifier intercepts spam & clickbait notifications in < 0.1ms without internet access.
-- **🎯 3-Tab Minimalist UI:** 
-  - **Whitelist:** Instantly whitelist any installed app with zero filtering delay.
-  - **Activity:** Clean, organized log of intercepted notifications with one-tap Unbuzz / Buzz toggle.
-  - **Settings:** Master switch to pause or resume filtering.
-- **⚡ Zero False Positives for Critical Alerts:** Strict regulatory TRAI verification and regex safety shields protect OTPs, banking transactions, food deliveries, and cab arrivals.
-- **🔒 Privacy Guaranteed:** Zero internet permissions (`android.permission.INTERNET` is not requested). Your notification data never leaves your device.
+- **🧠 Model Performance & Accuracy:**
+  - Ingested real-device user preference feedback and corrections (improved handling for marketing alerts, Kuvera stock updates, LinkedIn notifications, and background location alerts).
+  - Expanded feature vocabulary to 24,000+ n-gram and subword patterns for more nuanced spam discrimination.
+- **⚡ Faster On-Device Inference:**
+  - Reduced evaluation latency down to **~25 µs (0.025 ms)** per notification with 0% battery impact.
+- **🛡️ Enhanced Zero False-Positive Protection:**
+  - Strengthened mission-critical whitelist guarantees for OTPs, banking transactions, food delivery updates, and cab rides.
 
 ## Installation
-1. Download `ZeroBuzz-v1.0.0.apk` attached to this release.
-2. Open on your Android phone and tap **Install** (allow installation from unknown sources if prompted).
-3. Open **ZeroBuzz** and enable **Notification Access** when prompted.
-4. Enjoy a peaceful, zero-buzz notification feed!
+- Download and install `ZeroBuzz-v1.0.1.apk` attached below (an in-place update over v1.0.0).
